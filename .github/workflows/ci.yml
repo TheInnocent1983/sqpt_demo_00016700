@@ -94,25 +94,25 @@ jobs:
   # ──────────────────────────────────────────────
   # JOB 2 ─ SonarQube / SonarCloud Quality Gate
   # ──────────────────────────────────────────────
-sonar:
-  needs: test
-  runs-on: ubuntu-latest
+  sonar:
+    needs: test
+    runs-on: ubuntu-latest
 
-  steps:
-    - uses: actions/checkout@v5
-      with:
-        fetch-depth: 0
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
-    - name: Download coverage xml
-      uses: actions/download-artifact@v8
-      with:
-        name: coverage-xml
-        path: .
+      - name: Download coverage xml
+        uses: actions/download-artifact@v8
+        with:
+          name: coverage-xml
+          path: .
 
-    - name: SonarQube Scan
-      uses: SonarSource/sonarqube-scan-action@v7
-      env:
-         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v7
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   # ──────────────────────────────────────────────
   # JOB 3 ─ Build & Publish Final Artifacts
