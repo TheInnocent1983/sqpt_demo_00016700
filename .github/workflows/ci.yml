@@ -94,6 +94,8 @@ jobs:
   # ──────────────────────────────────────────────
   # JOB 2 ─ SonarQube / SonarCloud Quality Gate
   # ──────────────────────────────────────────────
+  # This thing is crazy
+  # ──────────────────────────────────────────────
   sonar:
     needs: test
     runs-on: ubuntu-latest
